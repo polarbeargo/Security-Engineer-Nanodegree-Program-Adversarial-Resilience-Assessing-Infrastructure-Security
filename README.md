@@ -9,6 +9,11 @@
  [image8]: ./images/samba.png
  [image9]: ./images/ssh.png
  [image10]: ./images/ubuntu_ssh.png
+[image11]: ./images/auditStaticSpeeds.png
+[image12]: ./images/checkSoftwareUpdate.png
+[image13]: ./images/passwdPolicy.png
+[image14]: ./images/softwareUpdate.png
+[image15]: ./images/windowsUpdate.png
 ### Step 1: Asset identification, address update, dependencies, patches, and native protections at targeted Server/ Desktop Operating Systems
 
 #### Task 1:   
@@ -51,6 +56,31 @@ samba --version
 - We can see they are not the most updated version of the SSH and  SAMBA versions. OpenSSH 7.6 can be upgraded to OpenSSH 8 and CVE-2020-1472 is the recent security update for this SAMBA version.
 
 #### Task 2: 
+
+On ubuntu we can check software update by the following commands:
+```
+ sudo apt-cache policy
+```
+![image14]
+Or
+```
+sudo apt-key list
+```
+![image12]
+We check the status of software updates in Group Policy Object Editor, click either of the Administrative Templates > Windows components > Windows Update.
+
+![image15]
+We audit StaticSpeeds systems by the following commands on Linux:
+
+```
+grep 'minlen' /etc/security/pwquality.conf
+```
+![image11]  
+On Windows:
+We can view password policies by searching for "Local Security Policy" using the windows search feature, and navigating to "Account Policy" > "Password Policy"
+
+![image13]
+
 #### Task 3: 
 #### Task 4: 
 
@@ -74,4 +104,4 @@ samba --version
 #### Task 4: 
 
 
-[Final Report](.2022-staticspeed-vunerability-report-template.docx)
+[Final Report](2022-staticspeed-vunerability-report-template.pdf)
