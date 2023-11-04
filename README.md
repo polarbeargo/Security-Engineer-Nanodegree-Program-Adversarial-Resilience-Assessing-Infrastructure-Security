@@ -14,6 +14,10 @@
 [image13]: ./images/passwdPolicy.png
 [image14]: ./images/softwareUpdate.png
 [image15]: ./images/windowsUpdate.png
+[image16]:images/VNC_ubuntu.png
+[image17]:images/vnc_win.png  
+[image18]:images/win_software.png
+
 ### Step 1: Asset identification, address update, dependencies, patches, and native protections at targeted Server/ Desktop Operating Systems
 
 #### Task 1:   
@@ -81,7 +85,16 @@ We can view password policies by searching for "Local Security Policy" using the
 
 ![image13]
 
-#### Task 3: 
+#### Task 3:   
+Is this system compliant?
+Ans: No, The path from CIS is not exsist. An additional group policy template is required to add MS security group. 
+![image18]
+The registry entry “DisableExceptionChainValidation” is not available.
+
+From the below screenshots vnc is installed on both the Linux and ubuntu machine.
+
+![image16] ![image17]
+
 #### Task 4: 
 
 ### Step 2: Assess Access Management at Targeted Assets  
