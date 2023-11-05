@@ -17,7 +17,9 @@
 [image16]:images/VNC_ubuntu.png
 [image17]:images/vnc_win.png  
 [image18]:images/win_software.png
-
+[image19]:images/enableSEHOP.png
+[image20]:images/CIS1.6.1.png
+[image21]:images/1.6.1.png
 ### Step 1: Asset identification, address update, dependencies, patches, and native protections at targeted Server/ Desktop Operating Systems
 
 #### Task 1:   
@@ -86,6 +88,25 @@ We can view password policies by searching for "Local Security Policy" using the
 ![image13]
 
 #### Task 3:   
+Windows CIS 18.3.4
+Ensure 'Enable Structured Exception Handling Overwrite Protection (SEHOP)' is set to 'Enabled.'
+
+- Click Start, click Run, type regedit, and then press ENTER.
+- Locate the following registry subkey:
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel\DisableExceptionChainValidationNote If you cannot find the DisableExceptionChainValidation registry entry under the HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel\ subkey, follow these steps to create it:
+
+
+    - Right-click kernel, point to
+New, and then click DWORD Value.
+    - Type
+DisableExceptionChainValidation, and then press ENTER.
+- Double-click
+DisableExceptionChainValidation.
+- Change the value of the DisableExceptionChainValidation registry entry to 0 to enable it, and then click OK.
+
+Note A value of 1 disables the registry entry. A value of 0 enables it.
+- Exit Registry Editor.
+![image19]
 Is this system compliant?
 Ans: No, The path from CIS is not exsist. An additional group policy template is required to add MS security group. 
 ![image18]
@@ -94,6 +115,19 @@ The registry entry “DisableExceptionChainValidation” is not available.
 From the below screenshots vnc is installed on both the Linux and ubuntu machine.
 
 ![image16] ![image17]
+
+Ubuntu CIS 1.6.1, 1.6.2
+1.6.1 Ensure XD/NX support is enabled
+```
+journalctl | grep 'protection: active'
+```
+![image21]
+1.6.2 Ensure address space layout randomization (ASLR) is enabled
+Run the following command:
+```
+kernel.randomize_va_space = 2
+```
+![image20]
 
 #### Task 4: 
 
