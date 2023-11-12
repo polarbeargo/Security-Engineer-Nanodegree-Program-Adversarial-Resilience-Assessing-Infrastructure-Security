@@ -20,6 +20,8 @@
 [image19]:images/enableSEHOP.png
 [image20]:images/CIS1.6.1.png
 [image21]:images/1.6.1.png
+[image22]:images/ubuntu_VPN.png
+[image23]:images/win_VPN.png
 ### Step 1: Asset identification, address update, dependencies, patches, and native protections at targeted Server/ Desktop Operating Systems
 
 #### Task 1:   
@@ -130,9 +132,21 @@ kernel.randomize_va_space = 2
 ![image20]
 
 #### Task 4: 
+Perform a network asset inventory using Nmap to identify VMs with open ports on both Windows and Linux
+![image5]
 
 ### Step 2: Assess Access Management at Targeted Assets  
 #### Task 1: 
+
+```
+ifconfig -a
+```
+![image22]
+
+```
+ipconfig /all
+```
+![image23]
 #### Task 2: 
 #### Task 3: 
 #### Task 4: 
