@@ -22,6 +22,9 @@
 [image21]:images/1.6.1.png
 [image22]:images/ubuntu_VPN.png
 [image23]:images/win_VPN.png
+[image24]:images/win_policy.png
+[image25]:images/policy_linux.png
+[image26]:images/AnonymousAccess.png
 ### Step 1: Asset identification, address update, dependencies, patches, and native protections at targeted Server/ Desktop Operating Systems
 
 #### Task 1:   
@@ -137,7 +140,7 @@ Perform a network asset inventory using Nmap to identify VMs with open ports on 
 
 ### Step 2: Assess Access Management at Targeted Assets  
 #### Task 1: 
-
+I don’t see any VLANs in the following screenshots.
 ```
 ifconfig -a
 ```
@@ -146,7 +149,13 @@ ifconfig -a
 ```
 ipconfig /all
 ```
-![image23]
+![image23]  
+
+There’s no any policy in the following screenshots:
+
+![image24] ![image25]
+From the following screenshots we can see the anonymous access has not been granted.
+![image26]
 #### Task 2: 
 #### Task 3: 
 #### Task 4: 
