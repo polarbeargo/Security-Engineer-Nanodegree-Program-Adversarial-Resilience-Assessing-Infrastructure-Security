@@ -25,6 +25,8 @@
 [image24]:images/win_policy.png
 [image25]:images/policy_linux.png
 [image26]:images/AnonymousAccess.png
+[image27]:images/ubuntu_firewall.png
+[image28]:images/firewall_win.png
 ### Step 1: Asset identification, address update, dependencies, patches, and native protections at targeted Server/ Desktop Operating Systems
 
 #### Task 1:   
@@ -158,6 +160,17 @@ From the following screenshots we can see the anonymous access has not been gran
 ![image26]
 #### Task 2: 
 #### Task 3: 
+On windows we check firewall status by the following command:
+```
+netsh advfirewall show allprofiles state
+```
+ ![image28]  
+On Ubuntu we use the following command:
+
+```
+ufw status
+```
+ ![image27]  
 #### Task 4: 
 
 ### Step 3: Log Monitoring Setup for Detection at Targeted Assets  
