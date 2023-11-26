@@ -27,6 +27,12 @@
 [image26]:images/AnonymousAccess.png
 [image27]:images/ubuntu_firewall.png
 [image28]:images/firewall_win.png
+[image29]:images/PII_win.png
+[image30]:images/PII_ubuntu.png
+[image31]:images/guest_ubuntu.png
+[image32]:images/Win_guest_pre.png
+[image33]:images/ubutu_guest_pre.png
+
 ### Step 1: Asset identification, address update, dependencies, patches, and native protections at targeted Server/ Desktop Operating Systems
 
 #### Task 1:   
@@ -172,6 +178,35 @@ ufw status
 ```
  ![image27]  
 #### Task 4: 
+
+ Conduct a Principles of Least Privilege assessment of StaticSpeed's system. We need to know: 
+- Which users have high privileges? 
+- Do important PII folders have the correct permissions and ownership? 
+- Are the default settings correct, and are there any excessive permissions? 
+- On our initial scan, we found "data" shared folders that need further investigation.
+- Are there "guest" accounts enabled? Are they allowed to use Sudo commands? Are they allowed to log in to ALL workstations?. 
+
+In windows, In windows locat “data” folder under "This PC" and see the properties and permissions it has.
+
+![image29]
+
+
+We can find this folder "data" in documents in linux.
+![image30]
+![image31]
+From the above screenshots we can see ustudent have the high privileges for both windows and ubuntu machine. There’s "guest" accounts enabled you can see it from the above ubuntu screenshots. There’s no guest account in windows machine see below screenshot:
+![image32]
+![image33]
+Run the following command to check if the guest account has administrator privileges:
+```
+getent group| grep admin
+```
+and
+```
+getent group| grep sudo
+```
+From above screenshot we can see ubuntu guest doesn’t has administrator privileges.
+
 
 ### Step 3: Log Monitoring Setup for Detection at Targeted Assets  
 
