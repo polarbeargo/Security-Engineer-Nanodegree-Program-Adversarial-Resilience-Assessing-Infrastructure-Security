@@ -32,6 +32,11 @@
 [image31]:images/guest_ubuntu.png
 [image32]:images/Win_guest_pre.png
 [image33]:images/ubutu_guest_pre.png
+[image34]:images/bruteforce1.png
+[image35]:images/bruteforce2.png
+[image36]:images/syslogubuntu.png
+[image37]:images/syslogwin.png
+[image38]:images/usernamePasswd.png
 
 ### Step 1: Asset identification, address update, dependencies, patches, and native protections at targeted Server/ Desktop Operating Systems
 
@@ -210,9 +215,32 @@ From above screenshot we can see ubuntu guest doesn’t has administrator privil
 
 ### Step 3: Log Monitoring Setup for Detection at Targeted Assets  
 
-#### Task 1: 
+#### Task 1:  
+
+We found that IP 10.0.2.7, which performs a port scan and a brute force assault against SMB 445, is the source of the attack.
+It appears that the password was compromised and the FTP on port 21 was open to brute force attacks.
+![image35]
+![image34]
+
+The following are the password was used successfully and username was compromised.
+![image38]
+
 #### Task 2: 
+We suspect that an internal user may have compromised another machine inside StaticSpeed's network and pivoted to one of the devices you are auditing. Please use lateralmovement.pcap and determine the following:
+
+- What was the source IP of the "initial" attack?
+- Did the attacker try to access your machine from a compromised device - MITRE ATT&CK Technique T1021? 
+- What service and port were targeted?
+- Was the attacker able to access a sensitive file at the machine you are auditing? Mitre ATT&ACK Technique - T1570
+
+We found that IP 10.0.2.7, which performs a port scan and a brute force assault against SMB 445, is the source of the attack. Yes attacker try to access our machine from a compromised device - MITRE ATT&CK Technique T1021. FTP  on port 21 was open to brute force attacks. Yes as you can see the screenshots from previous task the attacker use built-in file sharing protocols, such as file sharing across SMB/Windows Admin Shares to linked network shares or with authenticated connections via Remote Desktop Protocol, to create, copy files between inside victim systems to enable lateral movement.  
+
 #### Task 3: 
+
+We can spot EventID 4625 in our windows log ans in linux we can see username “nobody” is trying to access the certain things.
+![image36]
+![image37]
+
 #### Task 4: 
 
 ### Step 4: Assess Authentication Management at Targeted Assets 
