@@ -37,6 +37,14 @@
 [image36]:images/syslogubuntu.png
 [image37]:images/syslogwin.png
 [image38]:images/usernamePasswd.png
+[image39]:images/file_config.png
+[image40]:images/allowLogOnThroughRemote.png
+[image41]:images/rootAcessLinux.png
+[image42]:images/ssh_config.png
+[image43]:images/CIS531ubuntu.png
+[image44]:images/cis1152in.png
+[image45]:images/ftpSecurityubuntu.png
+[image46]:images/nmapSMB.png
 
 ### Step 1: Asset identification, address update, dependencies, patches, and native protections at targeted Server/ Desktop Operating Systems
 
@@ -241,13 +249,57 @@ We can spot EventID 4625 in our windows log ans in linux we can see username “
 ![image36]
 ![image37]
 
-#### Task 4: 
+#### Task 4:  
+
+To make sure that the right logging is enabled, check the contents of the /etc/rsyslog.conf by running the following command:
+cat  /etc/rsyslog.conf 
+We can see  the /etc/rsyslog.conf and set $FileCreateMode to 0640.
+![image39]
 
 ### Step 4: Assess Authentication Management at Targeted Assets 
 #### Task 1: 
+
+By Start > Run > gpedit.msc.
+Expand: Computer Configuration > Windows Settings > Security Settings > Local Policies > User Rights Management.
+Select: Allow log on through Remote Desktop Services. And sudo cat /etc/sudoers we can see administrators can remotely access windows machines and root access is permitted at the Linux host. 
+![image40]
+![image41]
+
+From the /etc/ssh/sshd_config file, we can see it doesn’t permit root login via ssh.
+![image42]
+
+There’s no users with excessive permissions and root remote login isn’t allowed
+There’s no any users that should not have remote access via ssh in Linux.
+Remote Desktop Access should only be granted to administrators in Windows there are other accounts “Remote Desktop User” given access.
+
 #### Task 2: 
+
+On Linux use the following command:
+We modified Password Length:
+minlen = 14 - password must be 14 characters or more 
+Password complexity:
+minclass = 4 - The minimum number of required classes of characters for the new password (digits, uppercase, lowercase, others) 
+![image43]
+On windows:
+Searching for "Local Security Policy" using the windows search feature, and navigating to "Account Policy" > "Password Policy". We set at least six characters in length and enable password must meet complex requirements.
+![image44]
+
 #### Task 3: 
+
 #### Task 4: 
+
+On windows machine we can clear see there is a vulnerability on port 445 with the command 
+```
+nmap -p 445 --script smb-security-mode.nse 10.0.2.4
+```
+![image46]
+
+On ubuntu we run the following command to check ftp service:
+
+```
+nmap –script ftp-brute 10.0.2.5 -p 21
+```
+![image45]
 
 
 [Final Report](2022-staticspeed-vunerability-report-template.pdf)
