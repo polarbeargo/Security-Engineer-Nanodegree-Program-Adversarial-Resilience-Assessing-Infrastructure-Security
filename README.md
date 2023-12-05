@@ -45,6 +45,8 @@
 [image44]:images/cis1152in.png
 [image45]:images/ftpSecurityubuntu.png
 [image46]:images/nmapSMB.png
+[image47]:images/cypher.png
+[image48]:images/FIPS.png
 
 ### Step 1: Asset identification, address update, dependencies, patches, and native protections at targeted Server/ Desktop Operating Systems
 
@@ -285,6 +287,10 @@ Searching for "Local Security Policy" using the windows search feature, and navi
 ![image44]
 
 #### Task 3: 
+From the following screenshots, these systems are compliant with FIPS 140-2 within the infrastructure. On Windows we enable FIPS configuration.
+![image48]
+On ubuntu we edit the /etc/ssh/sshd_config file add/modify the Ciphers line to contain a comma separated list of the site approved ciphers.
+![image47]
 
 #### Task 4: 
 
