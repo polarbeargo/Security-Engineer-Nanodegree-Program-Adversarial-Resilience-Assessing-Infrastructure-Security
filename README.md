@@ -47,6 +47,8 @@
 [image46]:images/nmapSMB.png
 [image47]:images/cypher.png
 [image48]:images/FIPS.png
+[image49]:images/nmapWin.png
+[image50]:images/nmapWin2.png
 
 ### Step 1: Asset identification, address update, dependencies, patches, and native protections at targeted Server/ Desktop Operating Systems
 
@@ -64,6 +66,10 @@ Also visit https://nmap.org/download#windows to download the latest version of N
 sudo nmap -sV --script vuln 10.0.2.4 (Or 10.0.2.6)
 ```
 ![image5] ![image6] ![image7]
+
+Nmap scan windows:
+![image49] ![image50]
+
 - Use Zenmap to scan the target IPv6 address.  
 
 ```
