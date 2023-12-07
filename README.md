@@ -49,6 +49,9 @@
 [image48]:images/FIPS.png
 [image49]:images/nmapWin.png
 [image50]:images/nmapWin2.png
+[image51]:images/portWin.png
+[image52]:images/portWin2.png
+[image53]:images/VLANwin.png
 
 ### Step 1: Asset identification, address update, dependencies, patches, and native protections at targeted Server/ Desktop Operating Systems
 
@@ -67,7 +70,7 @@ sudo nmap -sV --script vuln 10.0.2.4 (Or 10.0.2.6)
 ```
 ![image5] ![image6] ![image7]
 
-Nmap scan windows:
+Nmap scan windows we can see there’s CVE-2011-1002 prior to Avahi 0.6.29, by sending an empty mDNS (1) IPv4 or (2) IPv6 UDP packet to port 5353, remote attackers could create an infinite loop or denial of service via the avahi-core/socket.c in the avahi-daemon::
 ![image49] ![image50]
 
 - Use Zenmap to scan the target IPv6 address.  
@@ -167,6 +170,18 @@ kernel.randomize_va_space = 2
 Perform a network asset inventory using Nmap to identify VMs with open ports on both Windows and Linux
 ![image5]
 
+Open ports on Windows systems using ZenMap: 
+
+![image51]
+![image52]
+
+Mitigating the risks associated with open ports we can:
+- Apply the principle of least privilege and zero trust to reduce compromise impact.
+- Blocking inbound traffic coming from unidentified sources with firewalls.
+- Limiting the number of open ports by only permitting connections from reliable sources.
+- Closing unnecessary ports.
+- To restrict the amount of MAC addresses that can connect to a port, enable port security.
+
 ### Step 2: Assess Access Management at Targeted Assets  
 #### Task 1: 
 I don’t see any VLANs in the following screenshots.
@@ -175,17 +190,19 @@ ifconfig -a
 ```
 ![image22]
 
-```
-ipconfig /all
-```
-![image23]  
-
+Windows  
+Run the Device Manager (devmgmt.msc);
+Expand the Network adapters section and open the properties of your network adapter;
+Go to the Advanced tab we can see the VLAN setting:
+![image53]
 There’s no any policy in the following screenshots:
 
 ![image24] ![image25]
 From the following screenshots we can see the anonymous access has not been granted.
 ![image26]
 #### Task 2: 
+
+
 #### Task 3: 
 On windows we check firewall status by the following command:
 ```
