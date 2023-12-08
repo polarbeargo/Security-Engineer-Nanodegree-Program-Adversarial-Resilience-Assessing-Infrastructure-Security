@@ -52,6 +52,8 @@
 [image51]:images/portWin.png
 [image52]:images/portWin2.png
 [image53]:images/VLANwin.png
+[image54]:images/remoteAcessWin.png
+[image55]:images/remoteAcessUbu.png
 
 ### Step 1: Asset identification, address update, dependencies, patches, and native protections at targeted Server/ Desktop Operating Systems
 
@@ -202,6 +204,11 @@ From the following screenshots we can see the anonymous access has not been gran
 ![image26]
 #### Task 2: 
 
+Allowing only the services and protocols required for remote access, and restricting or disabling any others. By default, IPv6 is used, which means that logging settings and monitoring devices could ignore it. This gives attackers a possible point of entry.
+![image22]
+![image23]
+![image54]
+![image55]
 
 #### Task 3: 
 On windows we check firewall status by the following command:
