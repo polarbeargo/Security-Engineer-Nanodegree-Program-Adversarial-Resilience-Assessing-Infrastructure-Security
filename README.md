@@ -342,5 +342,13 @@ nmap –script ftp-brute 10.0.2.5 -p 21
 ```
 ![image45]
 
+- To complete the assessment, we need to detect CVEs using nmap vulnerability scan scripts by running the following command:
+```
+git clone https://github.com/scipag/vulscan scipag_vulscan
+ln -s `pwd`/scipag_vulscan /usr/share/nmap/scripts/vulscan
 
+nmap -sV --script=vulscan/vulscan.nse 10.0.2.4
+and
+nmap -sV --script=vulscan/vulscan.nse 10.0.2.6
+`````
 [Final Report](2022-staticspeed-vunerability-report-template.pdf)
