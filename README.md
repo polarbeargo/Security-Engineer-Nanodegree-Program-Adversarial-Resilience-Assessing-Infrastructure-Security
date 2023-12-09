@@ -53,7 +53,8 @@
 [image52]:images/portWin2.png
 [image53]:images/VLANwin.png
 [image54]:images/remoteAcessWin.png
-[image55]:images/remoteAcessUbu.png
+[image55]:images/remote_sub.png
+[image56]:images/eventforwardEmp.png
 
 ### Step 1: Asset identification, address update, dependencies, patches, and native protections at targeted Server/ Desktop Operating Systems
 
@@ -287,6 +288,10 @@ To make sure that the right logging is enabled, check the contents of the /etc/r
 cat  /etc/rsyslog.conf 
 We can see  the /etc/rsyslog.conf and set $FileCreateMode to 0640.
 ![image39]
+
+On windows we see event viewer and subscriptions are empty which means remote subscriptions related Windows Events Forwarder is not being used. 
+![image56]
+![image55]
 
 ### Step 4: Assess Authentication Management at Targeted Assets 
 #### Task 1: 
